@@ -1,0 +1,154 @@
+'use client';
+
+import Image from 'next/image';
+import { useState, useEffect } from 'react';
+import { useLocale } from 'next-intl';
+import { supabase } from '@/lib/supabase';
+
+interface Program {
+  id: string;
+  section_key: string;
+  title: any;
+  content: any;
+  media_urls: string[];
+}
+
+export default function ProgramAccordion() {
+  const locale = useLocale();
+  const [activeProgram, setActiveProgram] = useState(0);
+  const [programs, setPrograms] = useState<Program[]>([]);
+  const [header, setHeader] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchPrograms = async () => {
+      const { data } = await supabase
+        .from('content_sections')
+        .select('*')
+        .or('section_key.eq.programs_header,section_key.like.program_%')
+        .order('section_key');
+      
+      if (data) {
+        const headerData = data.find(d => d.section_key === 'programs_header');
+        const programData = data.filter(d => d.section_key.startsWith('program_'));
+        setHeader(headerData);
+        setPrograms(programData);
+        if (programData.length > 0) setActiveProgram(0);
+      }
+    };
+    fetchPrograms();
+  }, []);
+
+  if (!header || programs.length === 0) return null;
+
+  const getIcon = (key: string) => {
+    if (key.includes('social')) return (
+      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+      </svg>
+    );
+    if (key.includes('emergency')) return (
+      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd"/>
+      </svg>
+    );
+    if (key.includes('education')) return (
+      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V4.804z"/>
+      </svg>
+    );
+    if (key.includes('faith')) return (
+      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <path fillRule="evenodd" d="M10 2L3 7v11h14V7l-7-5zM6 9a1 1 0 100 2h8a1 1 0 100-2H6z" clipRule="evenodd"/>
+      </svg>
+    );
+    if (key.includes('women')) return (
+      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
+      </svg>
+    );
+    return (
+      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 2L3 7v11h14V7l-7-5z"/>
+      </svg>
+    );
+  };
+
+  const activeItem = programs[activeProgram];
+  const activeBg = activeItem?.media_urls?.[0];
+
+  return (
+    <section className="py-16 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 md:mb-4">{header.title[locale] || header.title.en}</h2>
+          <p className="text-base md:text-xl text-gray-600 max-w-3xl mx-auto">
+            {header.content[locale] || header.content.en}
+          </p>
+        </div>
+        
+        <div className="grid lg:grid-cols-2 gap-6 md:gap-8 lg:items-start">
+          <div className="order-2 lg:order-1">
+            <div className="h-[350px] sm:h-[450px] md:h-[500px] w-full rounded-none overflow-hidden relative flex flex-col justify-end" style={{background: 'linear-gradient(135deg, #313194, #27277a)'}}>
+              {activeBg && (
+                <Image src={activeBg} alt={activeItem.title?.en || ''} fill className="object-cover opacity-60 transition-all duration-700" />
+              )}
+              <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-t from-[#313194] to-transparent"></div>
+              <div className="relative z-10 p-6 md:p-8 text-white">
+                <div className="mb-3 flex items-center gap-3">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-white/20 rounded-none flex items-center justify-center flex-shrink-0">
+                    <span className="text-white">{getIcon(activeItem.section_key)}</span>
+                  </div>
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold leading-tight">{activeItem.title[locale] || activeItem.title.en}</h3>
+                </div>
+                <p className="text-sm sm:text-base text-white/85 mb-5 leading-relaxed line-clamp-3">{activeItem.content[locale] || activeItem.content.en}</p>
+                <a href="/programs" className="inline-block text-white px-5 py-2 text-sm rounded-none font-medium bg-white/20 hover:bg-white/30 transition-all border border-white/30">
+                  Read More →
+                </a>
+              </div>
+            </div>
+            <div className="flex justify-center gap-2 mt-3 md:mt-4">
+              {programs.map((program, idx) => (
+                <button
+                  key={program.id}
+                  style={activeProgram === idx ? {backgroundColor: '#313194'} : {}}
+                  className={`w-2 h-2 rounded-none transition-all ${
+                    activeProgram === idx ? 'w-6' : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+          
+          <div className="order-1 lg:order-2 space-y-2 md:space-y-3">
+            {programs.map((program, idx) => (
+              <div 
+                key={program.id} 
+                className={`rounded-none p-6 md:p-8 shadow-sm border border-gray-200 hover:shadow-md transition-all cursor-pointer flex items-center justify-between ${
+                  activeProgram === idx ? 'text-white' : 'bg-white hover:bg-gray-50'
+                }`}
+                style={activeProgram === idx ? {backgroundColor: '#313194'} : {}}
+                onClick={() => setActiveProgram(idx)}
+              >
+                <div className="flex items-center">
+                  <div className="w-8 h-8 md:w-10 md:h-10 rounded-none flex items-center justify-center mr-3 md:mr-4 flex-shrink-0" style={{backgroundColor: activeProgram === idx ? 'rgba(255,255,255,0.2)' : 'rgba(49,49,148,0.15)'}}>
+                    <span className="text-white">{getIcon(program.section_key)}</span>
+                  </div>
+                  <h3 className={`text-sm sm:text-base md:text-lg font-medium ${
+                    activeProgram === idx ? 'text-white' : 'text-gray-900'
+                  }`}>
+                    {program.title[locale] || program.title.en}
+                  </h3>
+                </div>
+                <span className={`text-lg md:text-xl ${
+                  activeProgram === idx ? 'text-white' : 'text-gray-400'
+                }`}>
+                  ›
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
