@@ -22,7 +22,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <img src="/ufvimages/logo.png" alt="Logo" className="w-32 mx-auto mb-4" />
           <h2 className="text-xl font-bold mb-6">Admin Panel</h2>
           <nav className="space-y-2">
-            <button onClick={() => router.push('/admin/dashboard')} className={`w-full text-left px-4 py-3 rounded ${pathname === '/admin/dashboard' ? 'bg-orange-600 text-white' : 'hover:bg-gray-100'}`}>
+            <button onClick={() => router.push('/admin/dashboard')} className={`w-full text-left px-4 py-3 rounded ${pathname === '/admin/dashboard' ? 'bg-[#313194] text-white' : 'hover:bg-gray-100'}`}>
               Dashboard
             </button>
             <button onClick={() => router.push('/admin/content')} className={`w-full text-left px-4 py-3 rounded ${pathname === '/admin/content' ? 'bg-[#313194] text-white' : 'hover:bg-gray-100'}`}>

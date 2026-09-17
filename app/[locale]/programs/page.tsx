@@ -34,7 +34,7 @@ export default function ProgramsPage() {
           <div className="flex flex-col lg:flex-row gap-12 items-start">
             <div className="lg:w-1/2">
               <div className="relative h-[420px] overflow-hidden shadow-2xl">
-                <Image src="/ufvimages/42.jpg" alt="Education and Vocational Training" fill className="object-cover" />
+                <Image src="/Education and Vocational Training/w5.png" alt="Education and Vocational Training" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <span className="text-xs font-bold uppercase tracking-widest text-white/80">Program 01</span>
@@ -57,7 +57,7 @@ export default function ProgramsPage() {
           <div className="flex flex-col lg:flex-row-reverse gap-12 items-start">
             <div className="lg:w-1/2">
               <div className="relative h-[420px] overflow-hidden shadow-2xl">
-                <Image src="/ufvimages/18.jpg" alt="Health and Wellness" fill className="object-cover" />
+                <Image src="/Health and Wellness/health-and-wellness.jpeg" alt="Health and Wellness" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <span className="text-xs font-bold uppercase tracking-widest text-white/80">Program 02</span>
@@ -99,7 +99,7 @@ export default function ProgramsPage() {
           <div className="flex flex-col lg:flex-row gap-12 items-start">
             <div className="lg:w-1/2">
               <div className="relative h-[420px] overflow-hidden shadow-2xl">
-                <Image src="/ufvimages/62.jpg" alt="Economic Empowerment" fill className="object-cover" />
+                <Image src="/Economic Empowerment/34.jpg" alt="Economic Empowerment" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <span className="text-xs font-bold uppercase tracking-widest text-white/80">Program 03</span>
@@ -142,7 +142,7 @@ export default function ProgramsPage() {
           <div className="flex flex-col lg:flex-row-reverse gap-12 items-start">
             <div className="lg:w-1/2">
               <div className="relative h-[420px] overflow-hidden shadow-2xl">
-                <Image src="/ufvimages/67.jpg" alt="Social Integration and Peace-building" fill className="object-cover" />
+                <Image src="/Social Integration, Peace-building and Humanitarian Aid/WhatsApp Image 2026-09-07 at 10.41.34 PM.png" alt="Social Integration and Peace-building" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <div className="absolute bottom-6 left-6">
                   <span className="text-xs font-bold uppercase tracking-widest text-white/80">Program 04</span>

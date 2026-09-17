@@ -73,8 +73,16 @@ export default function ProgramAccordion() {
     );
   };
 
+  // Map images by program order index — reliable regardless of section_key names in DB
+  const programImages = [
+    '/Education and Vocational Training/w5.png',
+    '/Health and Wellness/health-and-wellness.jpeg',
+    '/Economic Empowerment/34.jpg',
+    '/Social Integration, Peace-building and Humanitarian Aid/WhatsApp Image 2026-09-07 at 10.41.34 PM.png',
+  ];
+
   const activeItem = programs[activeProgram];
-  const activeBg = activeItem?.media_urls?.[0];
+  const activeBg = programImages[activeProgram] ?? programImages[0];
 
   return (
     <section className="py-16 bg-gray-50">
@@ -90,7 +98,7 @@ export default function ProgramAccordion() {
           <div className="order-2 lg:order-1">
             <div className="h-[350px] sm:h-[450px] md:h-[500px] w-full rounded-none overflow-hidden relative flex flex-col justify-end" style={{background: 'linear-gradient(135deg, #313194, #27277a)'}}>
               {activeBg && (
-                <Image src={activeBg} alt={activeItem.title?.en || ''} fill className="object-cover opacity-60 transition-all duration-700" />
+                <Image src={activeBg} alt={activeItem.title?.en || ''} fill className="object-cover opacity-60 transition-all duration-700" unoptimized />
               )}
               <div className="absolute bottom-0 left-0 right-0 h-2/5 bg-gradient-to-t from-[#313194] to-transparent"></div>
               <div className="relative z-10 p-6 md:p-8 text-white">
