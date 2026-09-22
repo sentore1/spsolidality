@@ -6,22 +6,22 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 
 const LOCAL_SLIDES = [
-  '/newslider/1.png',
-  '/newslider/2.png',
-  '/newslider/w2.png',
-  '/newslider/w2%20(1).png',
-  '/newslider/w4.png',
-  '/newslider/w5.png',
-  '/newslider/w6.png',
-  '/newslider/w8.png',
-  '/newslider/w81.png',
-  '/newslider/WhatsApp%20Image%202026-09-07%20at%2010.41.31%20PM.png',
-  '/newslider/WhatsApp%20Image%202026-09-07%20at%2010.41.31%20PM%20(2).png',
-  '/newslider/WhatsApp%20Image%202026-09-07%20at%207.39.34%20PM%20(2).png',
-  '/newslider/WhatsApp%20Image%202026-09-14%20at%202.01.40%20PM.png',
-  '/newslider/WhatsApp%20Image%202026-09-14%20at%202.01.40%20PM%20(2).png',
-  '/newslider/WhatsApp%20Image%202026-09-14%20at%202.01.40%20PM%20(3).jpeg',
-  '/newslider/WhatsApp%20Image%202026-09-14%20at%202.01.41%20PM%20(1).jpeg',
+  '/newslider/12.png',
+  '/newslider/1w.png',
+  '/newslider/dd.png',
+  '/newslider/ds.png',
+  '/newslider/erwr.png',
+  '/newslider/ewe3.png',
+  '/newslider/fsdfsf.png',
+  '/newslider/fsfsfsf.png',
+  '/newslider/rewrwr.png',
+  '/newslider/rrrr.png',
+  '/newslider/rwrwr.png',
+  '/newslider/vdvdvd.png',
+  '/newslider/vs.png',
+  '/newslider/vsv.png',
+  '/newslider/vsvs.png',
+  '/newslider/vsvsvs.png',
 ];
 
 export default function HeroSlider() {

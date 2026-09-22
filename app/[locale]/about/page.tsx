@@ -77,7 +77,7 @@ export default function AboutPage() {
         
         <div className="grid md:grid-cols-2 gap-16 items-center mb-32">
           <div className="relative h-[500px] rounded-xl overflow-hidden shadow-2xl">
-            <Image src={mission?.media_urls[0] || "/ufvimages/47.jpg"} alt="Community work" fill className="object-cover" />
+            <Image src={mission?.media_urls[0] || "/newslider/12.png"} alt="Community work" fill className="object-cover" unoptimized />
           </div>
           <div>
             <h2 className="text-5xl font-bold mb-8 text-gray-900">{mission?.title[locale] || t('ourMission')}</h2>
@@ -149,7 +149,7 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="relative h-[500px] rounded-xl overflow-hidden shadow-2xl">
-            <Image src={response?.media_urls[0] || "/ufvimages/34.jpg"} alt="Team work" fill className="object-cover" />
+            <Image src={response?.media_urls[0] || "/newslider/dd.png"} alt="Team work" fill className="object-cover" unoptimized />
           </div>
         </div>
 

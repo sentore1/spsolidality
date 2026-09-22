@@ -189,15 +189,39 @@ export default function DonatePage() {
               {locale === 'en' ? 'Choose Payment Method' : locale === 'fr' ? 'Choisir la méthode de paiement' : locale === 'rw' ? 'Hitamo uburyo bwo kwishyura' : 'اختر طريقة الدفع'}
             </h2>
             <div className="space-y-4 mb-6">
-              <div className="p-6 border-2 border-gray-200 rounded-lg">
-                <h3 className="font-bold text-lg mb-2">MTN Mobile Money</h3>
-                <p className="text-2xl font-bold" style={{color: '#313194'}}>*182*8*1*1111111#</p>
+              <div className="p-6 border-2 border-gray-200 rounded-lg hover:border-[#313194] transition-colors">
+                <h3 className="font-bold text-lg mb-3" style={{color: '#313194'}}>Momo Pay</h3>
+                <div className="space-y-2">
+                  <div>
+                    <span className="text-sm text-gray-600">Account Number:</span>
+                    <p className="text-xl font-bold text-gray-900">1359380</p>
+                  </div>
+                  <div>
+                    <span className="text-sm text-gray-600">Momo Name:</span>
+                    <p className="font-medium text-gray-800">Spirit of peace and solidarity</p>
+                  </div>
+                </div>
               </div>
-              <div className="p-6 border-2 border-gray-200 rounded-lg">
-                <h3 className="font-bold text-lg mb-2">Bank Transfer</h3>
-                <p className="text-sm text-gray-600 mb-2">For bank transfer details, please contact us:</p>
-                <p className="text-sm font-medium text-gray-800">📧 info@spsolidarity.org</p>
-                <p className="text-sm font-medium text-gray-800">📞 +250 786 908 562</p>
+              
+              <div className="p-6 border-2 border-gray-200 rounded-lg hover:border-[#313194] transition-colors">
+                <h3 className="font-bold text-lg mb-3" style={{color: '#313194'}}>Ecobank Rwanda</h3>
+                <div className="space-y-2">
+                  <div>
+                    <span className="text-sm text-gray-600">Account Number:</span>
+                    <p className="text-xl font-bold text-gray-900">6799201387</p>
+                  </div>
+                  <div>
+                    <span className="text-sm text-gray-600">Bank Name:</span>
+                    <p className="font-medium text-gray-800">Spirit of peace and solidarity</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-6 border-2 border-gray-200 rounded-lg bg-gray-50">
+                <h3 className="font-bold text-lg mb-2">Contact Information</h3>
+                <p className="text-sm text-gray-600 mb-3">For any questions or assistance with your donation:</p>
+                <p className="text-sm font-medium text-gray-800">Email: info@spsolidarity.org</p>
+                <p className="text-sm font-medium text-gray-800">Phone: +250 786 908 562</p>
               </div>
             </div>
             <div className="flex gap-4">

@@ -6,6 +6,10 @@ import { useState, useEffect } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { supabase } from '@/lib/supabase';
 
+// Use 2 images from newslider folder for each section
+const VISION_IMAGES = ['/newslider/12.png', '/newslider/1w.png'];
+const MISSION_IMAGES = ['/newslider/dd.png', '/newslider/ds.png'];
+
 export default function MissionSection() {
   const locale = useLocale();
   const t = useTranslations('home');
@@ -30,26 +34,21 @@ export default function MissionSection() {
     };
     fetchSections();
   }, []);
-  
-  const missionImages = mission?.media_urls || [];
-  const visionImages = vision?.media_urls || [];
 
   useEffect(() => {
-    if (missionImages.length === 0 || visionImages.length === 0) return;
-    
     const missionInterval = setInterval(() => {
-      setCurrentMissionImage((prev) => (prev + 1) % missionImages.length);
+      setCurrentMissionImage((prev) => (prev + 1) % MISSION_IMAGES.length);
     }, 4000);
     
     const visionInterval = setInterval(() => {
-      setCurrentVisionImage((prev) => (prev + 1) % visionImages.length);
+      setCurrentVisionImage((prev) => (prev + 1) % VISION_IMAGES.length);
     }, 4500);
     
     return () => {
       clearInterval(missionInterval);
       clearInterval(visionInterval);
     };
-  }, [missionImages.length, visionImages.length]);
+  }, []);
 
   if (!mission || !vision) return null;
   return (
@@ -61,33 +60,8 @@ export default function MissionSection() {
         </div>
         <div className="grid md:grid-cols-2 gap-8">
           <Link href="/about" className="bg-white rounded-none shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-            <div className="h-64 relative overflow-hidden">
-              {missionImages.map((image: string, index: number) => (
-                <Image
-                  key={index}
-                  src={image}
-                  alt="Community empowerment"
-                  fill
-                  className={`object-cover object-center transition-opacity duration-1000 ${
-                    index === currentMissionImage ? 'opacity-100' : 'opacity-0'
-                  }`}
-                />
-              ))}
-              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-              <div className="absolute bottom-4 left-4 text-white">
-                <h4 className="text-xl font-bold">{mission.title[locale] || mission.title.en}</h4>
-                <p className="text-sm opacity-90">Our Mission</p>
-              </div>
-            </div>
-            <div className="p-6">
-              <p className="text-gray-700">
-                {mission.content[locale] || mission.content.en}
-              </p>
-            </div>
-          </Link>
-          <Link href="/about" className="bg-white rounded-none shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-            <div className="h-64 relative overflow-hidden">
-              {visionImages.map((image: string, index: number) => (
+            <div className="h-96 relative overflow-hidden">
+              {VISION_IMAGES.map((image: string, index: number) => (
                 <Image
                   key={index}
                   src={image}
@@ -96,17 +70,44 @@ export default function MissionSection() {
                   className={`object-cover object-center transition-opacity duration-1000 ${
                     index === currentVisionImage ? 'opacity-100' : 'opacity-0'
                   }`}
+                  unoptimized
                 />
               ))}
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
               <div className="absolute bottom-4 left-4 text-white">
                 <h4 className="text-xl font-bold">{vision.title[locale] || vision.title.en}</h4>
-                <p className="text-sm opacity-90">Our Vision</p>
+                <p className="text-sm opacity-90">{t('ourVision')}</p>
               </div>
             </div>
             <div className="p-6">
               <p className="text-gray-700">
                 {vision.content[locale] || vision.content.en}
+              </p>
+            </div>
+          </Link>
+          <Link href="/about" className="bg-white rounded-none shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div className="h-96 relative overflow-hidden">
+              {MISSION_IMAGES.map((image: string, index: number) => (
+                <Image
+                  key={index}
+                  src={image}
+                  alt="Community empowerment"
+                  fill
+                  className={`object-cover object-center transition-opacity duration-1000 ${
+                    index === currentMissionImage ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  unoptimized
+                />
+              ))}
+              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+              <div className="absolute bottom-4 left-4 text-white">
+                <h4 className="text-xl font-bold">{mission.title[locale] || mission.title.en}</h4>
+                <p className="text-sm opacity-90">{t('ourMission')}</p>
+              </div>
+            </div>
+            <div className="p-6">
+              <p className="text-gray-700">
+                {mission.content[locale] || mission.content.en}
               </p>
             </div>
           </Link>

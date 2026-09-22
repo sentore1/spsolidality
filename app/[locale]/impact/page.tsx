@@ -66,7 +66,7 @@ export default function ImpactPage() {
 
       {/* Full-width image */}
       <div className="relative h-[400px] md:h-[500px] overflow-hidden">
-        <Image src="/ufvimages/80.jpg" alt="SPS community impact" fill className="object-cover" />
+        <Image src="/ufvimages/12.jpg" alt="SPS community impact" fill className="object-cover" unoptimized />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center">
           <div className="max-w-7xl mx-auto px-4 md:px-8 w-full">
             <p className="text-white/70 text-sm font-semibold uppercase tracking-widest mb-3">{t('storyLabel')}</p>
@@ -87,7 +87,7 @@ export default function ImpactPage() {
             <p className="text-gray-600 leading-relaxed">{t('storyP3')}</p>
           </div>
           <div className="relative h-[420px] overflow-hidden shadow-xl">
-            <Image src="/ufvimages/38.jpg" alt="SPS story" fill className="object-cover" />
+            <Image src="/ufvimages/20.jpg" alt="SPS story" fill className="object-cover" unoptimized />
           </div>
         </div>
 
