@@ -16,8 +16,11 @@ const fallbackPartners: Partner[] = [
   { id: 1, name: 'UNHCR',    logo_url: '/partners/Unhcr.JPG',                                        order_index: 1 },
   { id: 2, name: 'SEGAL',    logo_url: '/partners/SEGAL.JPG',                                        order_index: 2 },
   { id: 3, name: 'Inkomoko', logo_url: '/partners/Inkomoko.JPG',                                     order_index: 3 },
-  { id: 4, name: 'World',    logo_url: '/partners/World.JPG',                                        order_index: 4 },
-  { id: 5, name: 'Partner',  logo_url: '/partners/WhatsApp Image 2026-09-07 at 10.09.03 PM.jpeg',    order_index: 5 },
+  { id: 4, name: 'Partner',  logo_url: '/partners/WhatsApp Image 2026-09-07 at 10.09.03 PM.jpeg',    order_index: 4 },
+  { id: 5, name: 'Partner',  logo_url: '/partners/2.png',                                            order_index: 5 },
+  { id: 6, name: 'Partner',  logo_url: '/partners/3.png',                                            order_index: 6 },
+  { id: 7, name: 'Partner',  logo_url: '/partners/34.png',                                           order_index: 7 },
+  { id: 8, name: 'Partner',  logo_url: '/partners/fsdf.png',                                         order_index: 8 },
 ];
 
 export default function PartnersSection() {
@@ -43,33 +46,32 @@ export default function PartnersSection() {
           <p className="text-sm font-semibold uppercase tracking-widest text-[#313194] mb-2">Our Partners</p>
           <h2 className="text-3xl font-bold text-gray-900">Organisations We Work With</h2>
         </div>
-        <div className="flex justify-center items-center gap-10 flex-wrap">
+        <div className="flex justify-center items-center gap-6 flex-wrap">
           {partners.map((partner) => (
-            <div key={partner.id} className="flex flex-col items-center gap-3">
+            <div key={partner.id}>
               {partner.website_url ? (
                 <a href={partner.website_url} target="_blank" rel="noopener noreferrer">
-                  <div className="w-52 h-52 rounded-2xl bg-white shadow-md border border-gray-100 flex items-center justify-center p-4 hover:shadow-xl transition-shadow">
+                  <div className="w-32 h-32 rounded-xl bg-white shadow-md border border-gray-100 flex items-center justify-center p-3 hover:shadow-xl transition-shadow">
                     <Image
                       src={partner.logo_url}
                       alt={partner.name}
-                      width={180}
-                      height={180}
+                      width={100}
+                      height={100}
                       className="w-full h-full object-contain"
                     />
                   </div>
                 </a>
               ) : (
-                <div className="w-52 h-52 rounded-2xl bg-white shadow-md border border-gray-100 flex items-center justify-center p-4 hover:shadow-xl transition-shadow">
+                <div className="w-32 h-32 rounded-xl bg-white shadow-md border border-gray-100 flex items-center justify-center p-3 hover:shadow-xl transition-shadow">
                   <Image
                     src={partner.logo_url}
                     alt={partner.name}
-                    width={180}
-                    height={180}
+                    width={100}
+                    height={100}
                     className="w-full h-full object-contain"
                   />
                 </div>
               )}
-              <p className="text-sm font-semibold text-gray-600">{partner.name}</p>
             </div>
           ))}
         </div>
