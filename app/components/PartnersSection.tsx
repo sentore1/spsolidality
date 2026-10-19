@@ -16,15 +16,18 @@ const fallbackPartners: Partner[] = [
   { id: 1, name: 'UNHCR',    logo_url: '/partners/Unhcr.JPG',                                        order_index: 1 },
   { id: 2, name: 'SEGAL',    logo_url: '/partners/SEGAL.JPG',                                        order_index: 2 },
   { id: 3, name: 'Inkomoko', logo_url: '/partners/Inkomoko.JPG',                                     order_index: 3 },
-  { id: 4, name: 'Partner',  logo_url: '/partners/WhatsApp Image 2026-09-07 at 10.09.03 PM.jpeg',    order_index: 4 },
-  { id: 5, name: 'Partner',  logo_url: '/partners/2.png',                                            order_index: 5 },
-  { id: 6, name: 'Partner',  logo_url: '/partners/3.png',                                            order_index: 6 },
-  { id: 7, name: 'Partner',  logo_url: '/partners/34.png',                                           order_index: 7 },
-  { id: 8, name: 'Partner',  logo_url: '/partners/fsdf.png',                                         order_index: 8 },
+  { id: 4, name: 'RSSB',     logo_url: '/partners/rssb.jpeg',                                        order_index: 4 },
+  { id: 5, name: 'SFH',      logo_url: '/partners/sfh.jpeg',                                         order_index: 5 },
+  { id: 6, name: 'Partner',  logo_url: '/partners/WhatsApp Image 2026-09-07 at 10.09.03 PM.jpeg',    order_index: 6 },
+  { id: 7, name: 'Partner',  logo_url: '/partners/2.png',                                            order_index: 7 },
+  { id: 8, name: 'Partner',  logo_url: '/partners/3.png',                                            order_index: 8 },
+  { id: 9, name: 'Partner',  logo_url: '/partners/34.png',                                           order_index: 9 },
+  { id: 10, name: 'Partner', logo_url: '/partners/fsdf.png',                                         order_index: 10 },
 ];
 
 export default function PartnersSection() {
   const [partners, setPartners] = useState<Partner[]>(fallbackPartners);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const fetchPartners = async () => {
@@ -39,6 +42,26 @@ export default function PartnersSection() {
     fetchPartners();
   }, []);
 
+  // Auto-slide effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % partners.length);
+    }, 3000); // Slide every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [partners.length]);
+
+  // Calculate visible partners (show 7 at a time on desktop, 5 on tablet, 3 on mobile)
+  const getVisiblePartners = () => {
+    const visibleCount = 7;
+    const visible = [];
+    for (let i = 0; i < visibleCount; i++) {
+      const index = (currentIndex + i) % partners.length;
+      visible.push(partners[index]);
+    }
+    return visible;
+  };
+
   return (
     <section className="py-16 bg-white border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,11 +69,24 @@ export default function PartnersSection() {
           <p className="text-sm font-semibold uppercase tracking-widest text-[#313194] mb-2">Our Partners</p>
           <h2 className="text-3xl font-bold text-gray-900">Organisations We Work With</h2>
         </div>
-        <div className="flex justify-center items-center gap-6 flex-wrap">
-          {partners.map((partner) => (
-            <div key={partner.id}>
-              {partner.website_url ? (
-                <a href={partner.website_url} target="_blank" rel="noopener noreferrer">
+        
+        <div className="relative overflow-hidden">
+          <div className="flex items-center justify-center gap-6 transition-transform duration-500 ease-in-out">
+            {getVisiblePartners().map((partner, idx) => (
+              <div key={`${partner.id}-${idx}`} className="flex-shrink-0">
+                {partner.website_url ? (
+                  <a href={partner.website_url} target="_blank" rel="noopener noreferrer">
+                    <div className="w-32 h-32 rounded-xl bg-white shadow-md border border-gray-100 flex items-center justify-center p-3 hover:shadow-xl transition-shadow">
+                      <Image
+                        src={partner.logo_url}
+                        alt={partner.name}
+                        width={100}
+                        height={100}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                  </a>
+                ) : (
                   <div className="w-32 h-32 rounded-xl bg-white shadow-md border border-gray-100 flex items-center justify-center p-3 hover:shadow-xl transition-shadow">
                     <Image
                       src={partner.logo_url}
@@ -60,20 +96,24 @@ export default function PartnersSection() {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                </a>
-              ) : (
-                <div className="w-32 h-32 rounded-xl bg-white shadow-md border border-gray-100 flex items-center justify-center p-3 hover:shadow-xl transition-shadow">
-                  <Image
-                    src={partner.logo_url}
-                    alt={partner.name}
-                    width={100}
-                    height={100}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              )}
-            </div>
-          ))}
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Navigation dots */}
+          <div className="flex justify-center gap-2 mt-6">
+            {partners.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentIndex ? 'bg-[#313194] w-6' : 'bg-gray-300'
+                }`}
+                aria-label={`Go to partner ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

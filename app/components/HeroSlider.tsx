@@ -6,22 +6,22 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 
 const LOCAL_SLIDES = [
-  '/newslider/12.png',
-  '/newslider/1w.png',
-  '/newslider/dd.png',
-  '/newslider/ds.png',
-  '/newslider/erwr.png',
-  '/newslider/ewe3.png',
-  '/newslider/fsdfsf.png',
-  '/newslider/fsfsfsf.png',
-  '/newslider/rewrwr.png',
-  '/newslider/rrrr.png',
-  '/newslider/rwrwr.png',
-  '/newslider/vdvdvd.png',
-  '/newslider/vs.png',
-  '/newslider/vsv.png',
-  '/newslider/vsvs.png',
-  '/newslider/vsvsvs.png',
+  '/slides3/12.png',
+  '/slides3/child.jpg',
+  '/slides3/ds.png',
+  '/slides3/dsf.jpg',
+  '/slides3/erwr.png',
+  '/slides3/ewe3.png',
+  '/slides3/fsdfsf.png',
+  '/slides3/fsfsfsf.png',
+  '/slides3/rewrwr.png',
+  '/slides3/rrrr.png',
+  '/slides3/team (1).jpg',
+  '/slides3/team (3).jpg',
+  '/slides3/vdvdvd.png',
+  '/slides3/vs.png',
+  '/slides3/vsv.png',
+  '/slides3/vsvs.png',
 ];
 
 export default function HeroSlider() {

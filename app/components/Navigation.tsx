@@ -53,29 +53,29 @@ export default function Navigation({ logoWhite = false }: { logoWhite?: boolean 
             />
           </Link>
           <div className="hidden md:flex space-x-8">
-            <Link href="/about" className={`text-sm hover:text-[#313194] ${
+            <Link href="/about" className={`text-base hover:text-[#313194] ${
               isScrolled ? 'text-gray-700' : 'text-white'
             }`}>{t('about')}</Link>
             <div className="relative" onMouseEnter={() => setProgramsOpen(true)} onMouseLeave={() => setProgramsOpen(false)}>
-              <button className={`text-sm hover:text-[#313194] ${
+              <button className={`text-base hover:text-[#313194] ${
                 isScrolled ? 'text-gray-700' : 'text-white'
               }`}>{t('programs')}</button>
               {programsOpen && (
                 <div className="absolute top-full left-0 pt-2 w-48 z-50">
                   <div className="bg-white/95 backdrop-blur-md shadow-lg rounded-none py-2">
-                    <Link href="/programs" className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8e8f5]">{t('programs')}</Link>
-                    <Link href="/impact" className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#e8e8f5]">{t('impact')}</Link>
+                    <Link href="/programs" className="block px-4 py-2 text-base text-gray-700 hover:bg-[#e8e8f5]">{t('programs')}</Link>
+                    <Link href="/impact" className="block px-4 py-2 text-base text-gray-700 hover:bg-[#e8e8f5]">{t('impact')}</Link>
                   </div>
                 </div>
               )}
             </div>
-            <Link href="/blog" className={`text-sm hover:text-[#313194] ${
+            <Link href="/blog" className={`text-base hover:text-[#313194] ${
               isScrolled ? 'text-gray-700' : 'text-white'
             }`}>{t('blog')}</Link>
-            <Link href="/gallery" className={`text-sm hover:text-[#313194] ${
+            <Link href="/gallery" className={`text-base hover:text-[#313194] ${
               isScrolled ? 'text-gray-700' : 'text-white'
             }`}>{t('gallery')}</Link>
-            <Link href="/contact" className={`text-sm hover:text-[#313194] ${
+            <Link href="/contact" className={`text-base hover:text-[#313194] ${
               isScrolled ? 'text-gray-700' : 'text-white'
             }`}>{t('contact')}</Link>
           </div>
