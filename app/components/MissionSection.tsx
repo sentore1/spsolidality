@@ -6,9 +6,9 @@ import { useState, useEffect } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { supabase } from '@/lib/supabase';
 
-// Use 2 images from newslider folder for each section
-const VISION_IMAGES = ['/newslider/12.png', '/newslider/1w.png'];
-const MISSION_IMAGES = ['/newslider/dd.png', '/newslider/ds.png'];
+// Use 2 images from vision images folder for each section
+const VISION_IMAGES = ['/vision images/1.png', '/vision images/2.png'];
+const MISSION_IMAGES = ['/vision images/w2.png', '/vision images/w4.png'];
 
 export default function MissionSection() {
   const locale = useLocale();
