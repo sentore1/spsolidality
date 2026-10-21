@@ -14,6 +14,7 @@ const LOCAL_SLIDES = [
   '/slides3/ewe3.png',
   '/slides3/fsdfsf.png',
   '/slides3/fsfsfsf.png',
+  '/slides3/hospital.jpeg',
   '/slides3/rewrwr.png',
   '/slides3/rrrr.png',
   '/slides3/team (1).jpg',
