@@ -6,8 +6,8 @@ import { useState, useEffect } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { supabase } from '@/lib/supabase';
 
-// Use 2 images from vision images folder for each section
-const VISION_IMAGES = ['/vision images/1.png', '/vision images/2.png'];
+// Use images from vision images folder and slides3 for each section
+const VISION_IMAGES = ['/vision images/1.png', '/vision images/2.png', '/slides3/hospital.jpeg'];
 const MISSION_IMAGES = ['/vision images/w2.png', '/vision images/w4.png'];
 
 export default function MissionSection() {
