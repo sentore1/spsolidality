@@ -7,8 +7,20 @@ import { useLocale, useTranslations } from 'next-intl';
 import { supabase } from '@/lib/supabase';
 
 // Use images from vision images folder and slides3 for each section
-const VISION_IMAGES = ['/vision images/1.png', '/vision images/2.png', '/slides3/hospital.jpeg'];
-const MISSION_IMAGES = ['/vision images/w2.png', '/vision images/w4.png'];
+const VISION_IMAGES = [
+  '/vision images/1.png',
+  '/vision images/2.png',
+  '/slides3/hospital.jpeg',
+  '/vision images/w5.png',
+  '/vision images/w6.png',
+  '/vision images/WhatsApp Image 2026-09-07 at 10.17.27 PM.png'
+];
+const MISSION_IMAGES = [
+  '/vision images/w2.png',
+  '/vision images/w4.png',
+  '/vision images/WhatsApp Image 2026-09-07 at 10.41.34 PM.png',
+  '/vision images/WhatsApp Image 2026-09-07 at 7.39.34 PM.png'
+];
 
 export default function MissionSection() {
   const locale = useLocale();
